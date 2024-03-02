@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240302152000
+      author: a.tsaregorodtsev
+      changes:
+        - sql: INSERT INTO user_info (id, name, hex_password, role) values (nextval('user_seq'), 'Andrey', '{SHA-256}{test}35bfe5fe27bd8fa134bfb2399e28620758076b2e91e6f6275fd87f767e0991a8', 'ADMIN');

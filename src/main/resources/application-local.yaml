@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    enabled: true
+  jpa:
+    generate-ddl: off
+    show-sql: true
+  docker:
+    compose:
+      lifecycle-management: start_and_stop
