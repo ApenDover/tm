@@ -1,5 +1,6 @@
 package ts.andrey.tm.confirguration.security;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 public class UserInfoUserDetails implements UserDetails {
 
+    @Getter
     private UserInfo userInfo;
 
     @Override

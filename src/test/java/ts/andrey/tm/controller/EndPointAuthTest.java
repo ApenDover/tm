@@ -1,4 +1,4 @@
-package ts.andrey.tm;
+package ts.andrey.tm.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,33 +9,34 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import ts.andrey.tm.tmconst.ApiConst;
 
 
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-class TmApplicationTests {
+class EndPointAuthTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 
 	@Test
 	void SUCCESS_PATH() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/testAdmin")
+		mockMvc.perform(MockMvcRequestBuilders.get(ApiConst.ADMIN_TEST_API)
 						.with(SecurityMockMvcRequestPostProcessors.httpBasic("Andrey", "test")))
 				.andExpect(MockMvcResultMatchers.status().isOk());
 	}
 
 	@Test
 	void FORBIDDEN_PATH() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/testUser")
+		mockMvc.perform(MockMvcRequestBuilders.get(ApiConst.USER_TEST_API)
 						.with(SecurityMockMvcRequestPostProcessors.httpBasic("Andrey", "test")))
 				.andExpect(MockMvcResultMatchers.status().isForbidden());
 	}
 
 	@Test
 	void UNAUTHORIZED_PATH() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/api/testUser")
+		mockMvc.perform(MockMvcRequestBuilders.get(ApiConst.USER_TEST_API)
 						.with(SecurityMockMvcRequestPostProcessors.httpBasic("Andrey", "errorPassword")))
 				.andExpect(MockMvcResultMatchers.status().isUnauthorized());
 	}
@@ -46,6 +47,5 @@ class TmApplicationTests {
 						.with(SecurityMockMvcRequestPostProcessors.httpBasic("errorLogin", "errorPassword")))
 				.andExpect(MockMvcResultMatchers.status().isUnauthorized());
 	}
-
 
 }
