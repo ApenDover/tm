@@ -7,32 +7,32 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import ts.andrey.tm.data.entity.UserInfo;
+import ts.andrey.tm.entity.UserInfoEntity;
 
 import java.util.Collection;
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-@Setter
 public class UserInfoUserDetails implements UserDetails {
 
     @Getter
-    private UserInfo userInfo;
+    @Setter
+    private UserInfoEntity userInfoEntity;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + userInfo.getRole()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + userInfoEntity.getRole()));
     }
 
     @Override
     public String getPassword() {
-        return userInfo.getHexPassword();
+        return userInfoEntity.getHexPassword();
     }
 
     @Override
     public String getUsername() {
-        return userInfo.getName();
+        return userInfoEntity.getName();
     }
 
     @Override

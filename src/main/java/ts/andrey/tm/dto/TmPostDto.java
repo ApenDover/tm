@@ -14,7 +14,8 @@ import java.util.List;
 @NoArgsConstructor(force = true)
 public class TmPostDto {
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private int id;
+
     private Integer headId;
 
     private String title;
