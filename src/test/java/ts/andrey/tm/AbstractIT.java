@@ -7,4 +7,5 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @AutoConfigureMockMvc
 public abstract class AbstractIT {
+
 }

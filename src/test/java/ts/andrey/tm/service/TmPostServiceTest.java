@@ -106,8 +106,6 @@ class TmPostServiceTest {
         assertEquals(TITLE, actual.get(0).getChildPosts().get(0).getTitle());
         assertEquals(MESSAGE, actual.get(0).getChildPosts().get(1).getMessage());
         assertEquals(TITLE, actual.get(0).getChildPosts().get(1).getTitle());
-
     }
-
 
 }
