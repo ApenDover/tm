@@ -4,3 +4,6 @@ databaseChangeLog:
       author: a.tsaregorodtsev
       changes:
         - sql: INSERT INTO user_info (id, name, hex_password, role) values (nextval('user_seq'), 'Andrey', '{SHA-256}{test}35bfe5fe27bd8fa134bfb2399e28620758076b2e91e6f6275fd87f767e0991a8', 'ADMIN');
+        - sql: INSERT INTO tm_post (id, title, id_owner) values (nextval('post_seq'), 'папка', currval('user_seq'));
+        - sql: INSERT INTO tm_post (id_head, id, title, message) values (1, nextval('post_seq'), 'Первый пост', 'Это текст первого поста');
+        - sql: INSERT INTO tm_post (id_head, id, title, message) values (1, nextval('post_seq'), 'Второй пост', 'Вот такая история');

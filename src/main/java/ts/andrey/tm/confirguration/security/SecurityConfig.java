@@ -10,6 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import ts.andrey.tm.tmconst.ApiConst;
 
 @Configuration
 @RequiredArgsConstructor
@@ -20,8 +21,8 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/testUser").hasRole("USER")
-                                .requestMatchers("/api/testAdmin").hasRole("ADMIN")
+                        auth.requestMatchers(ApiConst.USER_TEST_API).hasRole("USER")
+                                .requestMatchers(ApiConst.ADMIN_TEST_API).hasRole("ADMIN")
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
@@ -35,7 +36,6 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
 
 }
 

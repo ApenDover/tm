@@ -1,4 +1,4 @@
-package ts.andrey.tm;
+package ts.andrey.tm.configuration;
 
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.boot.jdbc.DataSourceBuilder;
